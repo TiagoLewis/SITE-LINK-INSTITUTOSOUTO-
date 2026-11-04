@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090b0b">
 <title>Instituto Souto</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Instituto Souto — preparatório para concursos da Guarda Municipal e da Polícia Militar do Rio de Janeiro.">
@@ -674,7 +680,9 @@ html,body{margin:0!important;padding:0}
 .btn-gold:hover{background:linear-gradient(90deg,#c48a2c,#ecc672 40%,#fae6a8)!important}
 .np-cat{background:linear-gradient(90deg,#b47a22,#e2b553 45%,#f6dc92)!important}
 </style>
-
+<style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%}html,body{margin:0;padding:0;background:#090b0b}*{-webkit-tap-highlight-color:transparent}img{max-width:100%}</style>
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
@@ -915,7 +923,7 @@ html,body{margin:0!important;padding:0}
 <footer>
   <div class="wrap">
     <span>© 2026 Instituto Souto · Rio de Janeiro/RJ</span>
-    <nav aria-label="Rodapé"><a href="https://www.instagram.com/profismaelsouto/" target="_blank" rel="noopener">Instagram @profismaelsouto ↗</a><a href="https://app.institutosouto.com.br/" target="_blank" rel="noopener">Área do Aluno ↗</a><a href="#">Termos de Uso</a><a href="#">Troca e reembolso</a><a href="#">Privacidade</a></nav>
+    <nav aria-label="Rodapé"><a href="https://www.instagram.com/profismaelsouto/" target="_blank" rel="noopener">Instagram @profismaelsouto ↗︎</a><a href="https://app.institutosouto.com.br/" target="_blank" rel="noopener">Área do Aluno ↗︎</a><a href="#">Termos de Uso</a><a href="#">Troca e reembolso</a><a href="#">Privacidade</a></nav>
   </div>
 </footer>
 
@@ -970,11 +978,11 @@ html,body{margin:0!important;padding:0}
     {k:'mais',preco:'',g:'pm',t1:'Mais',t2:'preparatórios',t3:'Veja todas as turmas',tag:'Instituto Souto',url:U+'link-uteis-3',img:IMGB+'07/ChatGPT-Image-Jul-14-2026-07_58_57-PM.png.webp'}
   ];
   function cover(x){var c=CR[x.k];return '<div class="cov art bn" style="--tint:'+c.f+'"><div class="bn-fallback"><div><span class="t1">'+x.t1+' '+x.t2+'</span><span class="t3">'+x.t3+'</span></div></div>'+
-    '<img src="'+x.img+'" alt="'+x.t1+' '+x.t2+' — '+x.t3+'" loading="lazy" onerror="this.remove()"></div>';}
+    '<img src="'+x.img+'" data-alt="'+x.img.replace('/webp-express/webp-images','').replace(/\.webp$/,'')+'" alt="'+x.t1+' '+x.t2+' — '+x.t3+'" loading="lazy" referrerpolicy="no-referrer" onerror="if(this.dataset.alt&&this.src!==this.dataset.alt){this.src=this.dataset.alt;this.dataset.alt=\'\';}else{this.remove();}"></div>';}
   var C=document.getElementById('courses');
   function renderCourses(g){
     var list=cursos.filter(function(x){return g==='todos'||x.g===g||(x.k==='mais');});
-    C.innerHTML=list.map(function(x){return '<a class="course" href="'+x.url+'" target="_blank" rel="noopener">'+cover(x)+'<div class="meta"><div class="meta-l"><span><b>'+x.t1+' '+x.t2+'</b><small>'+x.tag+'</small></span></div><span class="meta-go">Ver curso ↗</span></div></a>';}).join('');
+    C.innerHTML=list.map(function(x){return '<a class="course" href="'+x.url+'" target="_blank" rel="noopener">'+cover(x)+'<div class="meta"><div class="meta-l"><span><b>'+x.t1+' '+x.t2+'</b><small>'+x.tag+'</small></span></div><span class="meta-go">Ver curso ↗︎</span></div></a>';}).join('');
   }
   renderCourses('todos');
   document.querySelectorAll('.tabs button').forEach(function(b){
@@ -986,14 +994,14 @@ html,body{margin:0!important;padding:0}
 
   // mini ticker with crest per course (duplicated for seamless loop)
   var all=cursos;
-  function mini(x,hid){return '<a class="mini" href="'+x.url+'" target="_blank" rel="noopener"'+(hid?' aria-hidden="true" tabindex="-1"':'')+'><b>'+x.t1+' '+x.t2+'</b><strong>'+(x.preco?'R$ '+x.preco:'Ver valor ↗')+'</strong></a>';}
+  function mini(x,hid){return '<a class="mini" href="'+x.url+'" target="_blank" rel="noopener"'+(hid?' aria-hidden="true" tabindex="-1"':'')+'><b>'+x.t1+' '+x.t2+'</b><strong>'+(x.preco?'R$ '+x.preco:'Ver valor ↗︎')+'</strong></a>';}
   var mh=all.map(function(x){return mini(x,false);}).join(''),mh2=all.map(function(x){return mini(x,true);}).join('');
   document.getElementById('minis').innerHTML=mh+mh2;
 
   // professors: military honor board (no names)
   var profs=[['Ismael Souto','Mentoria de Estudos e Direito'],['Sérgio Rodrigues','Constituição Federal'],['Kaio Bastos','História'],['André Play','Informática'],['Léo Martins','Português'],['Vitor Moura','Geografia e Atualidades'],['Alexandre Monteiro','Matemática e RLM'],['Rogério Soares','Constituição Estadual e Legislação']];
   document.getElementById('profs').innerHTML=profs.map(function(s,i){
-    return '<figure class="lin-card"><img src="img/prof'+(i+1)+'.webp" alt="Prof. '+s[0]+', '+s[1]+'" width="720" height="900" loading="lazy"></figure>';
+    return '<figure class="lin-card"><img src="img/prof'+(i+1)+'.webp" alt="Prof. '+s[0]+', '+s[1]+'" width="720" height="900" decoding="async"></figure>';
   }).join('');
   (function(){var t=document.getElementById('profs');var c=t.innerHTML;t.innerHTML=c+c.replace(/<figure class="lin-card">/g,'<figure class="lin-card" aria-hidden="true">');})();
 
@@ -1093,7 +1101,7 @@ html,body{margin:0!important;padding:0}
     function card(it,big){var sp=split(it),tp=topic(sp[0]);
       return '<article class="post np'+(big?' big':'')+'"><a class="post-link" href="'+esc(it.link)+'" target="_blank" rel="noopener">'+
         '<div class="np-img"><img src="'+esc(pic(it,tp))+'" alt="" loading="lazy"><span class="np-cat">'+LBL[tp]+'</span>'+(big?'<span class="np-live"><i></i>Mais recente</span>':'')+'</div>'+
-        '<div class="pbody"><div class="ptag"><b>'+esc(sp[1]||'Notícia')+'</b><span>'+when(it.pubDate)+'</span></div><h4>'+esc(sp[0])+'</h4><span class="more">Ler no site ↗</span></div></a></article>';}
+        '<div class="pbody"><div class="ptag"><b>'+esc(sp[1]||'Notícia')+'</b><span>'+when(it.pubDate)+'</span></div><h4>'+esc(sp[0])+'</h4><span class="more">Ler no site ↗︎</span></div></a></article>';}
     function row(it){var sp=split(it),tp=topic(sp[0]);
       return '<li><a href="'+esc(it.link)+'" target="_blank" rel="noopener"><img src="'+esc(pic(it,tp))+'" alt="" loading="lazy"><span class="nr-t"><em>'+LBL[tp]+'</em><b>'+esc(sp[0])+'</b><span>'+esc(sp[1])+' · '+when(it.pubDate)+'</span></span></a></li>';}
     function load(){
@@ -1115,3 +1123,5 @@ html,body{margin:0!important;padding:0}
   nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');bt.setAttribute('aria-expanded','false');}});
 })();
 </script>
+</body>
+</html>
