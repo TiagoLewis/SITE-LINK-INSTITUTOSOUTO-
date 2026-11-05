@@ -39,7 +39,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio" aria-label="Instituto Souto, início"><img src="img/logo.webp" alt="Instituto Souto" width="656" height="262"></a>
+    <a class="logo" href="#inicio" aria-label="Instituto Souto, início"><img src="img/logo-sm.webp" alt="Instituto Souto" width="320" height="128" fetchpriority="high"></a>
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="#quem-somos">Quem Somos</a>
       <a href="#diferencial">Nosso Diferencial</a>
@@ -236,7 +236,7 @@
       <img decoding="async" src="img/ismael.webp" alt="Professor Ismael Souto de braços cruzados com colete tático, em uma rua à noite com luzes de viatura" width="1440" height="810" loading="lazy">
     </figure>
     <div class="about-copy">
-      <img class="about-logo" src="img/logo.webp" alt="Instituto Souto" width="656" height="262">
+      <img class="about-logo" loading="lazy" decoding="async" src="img/logo-sm.webp" alt="Instituto Souto" width="320" height="128">
       <span class="kicker">Quem somos</span>
       <h2>Sobre o Prof. <em>Ismael Souto</em></h2>
       <p>O Professor Ismael Souto é um respeitado professor e especialista em Direito Penal, destacado como uma das melhores didáticas do Brasil.</p>
@@ -317,13 +317,14 @@ var cursos=[
 {k:'mais',preco:'',g:'pm',t1:'Mais',t2:'preparatórios',t3:'Veja todas as turmas',tag:'Instituto Souto',url:U+'link-uteis-3',img:IMGB+'07/ChatGPT-Image-Jul-14-2026-07_58_57-PM.png.webp'}
 ];
 function cover(x){var c=CR[x.k];return '<div class="cov art bn" style="--tint:'+c.f+'"><div class="bn-fallback"><div><span class="t1">'+x.t1+' '+x.t2+'</span><span class="t3">'+x.t3+'</span></div></div>'+
-'<img src="'+x.img+'" data-alt="'+x.img.replace('/webp-express/webp-images','').replace(/\.webp$/,'')+'" alt="'+x.t1+' '+x.t2+' — '+x.t3+'" loading="lazy" referrerpolicy="no-referrer" onerror="if(this.dataset.alt&&this.src!==this.dataset.alt){this.src=this.dataset.alt;this.dataset.alt=\'\';}else{this.remove();}"></div>';}
+(function(){var s768=x.img.replace(/\.png\.webp$/,'-768x368.png.webp'),s1536=x.img.replace(/\.png\.webp$/,'-1536x736.png.webp');
+return '<img src="'+s768+'" srcset="'+s768+' 768w, '+s1536+' 1536w" sizes="(max-width:620px) 92vw, (max-width:980px) 46vw, 380px" data-alt="'+x.img+'" alt="'+x.t1+' '+x.t2+' — '+x.t3+'" width="768" height="368" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.alt){this.removeAttribute(\'srcset\');this.src=this.dataset.alt;this.dataset.alt=\'\';}else{this.remove();}">';})()+'</div>';}
 var C=document.getElementById('courses');
 function renderCourses(g){
 var list=cursos.filter(function(x){return g==='todos'||x.g===g||(x.k==='mais');});
 C.innerHTML=list.map(function(x){return '<a class="course" href="'+x.url+'" target="_blank" rel="noopener">'+cover(x)+'<div class="meta"><div class="meta-l"><span><b>'+x.t1+' '+x.t2+'</b><small>'+x.tag+'</small></span></div><span class="meta-go">Ver curso ↗︎</span></div></a>';}).join('');
 }
-renderCourses('todos');
+setTimeout(function(){renderCourses('todos');},0);
 document.querySelectorAll('.tabs button').forEach(function(b){
 b.addEventListener('click',function(){
 document.querySelectorAll('.tabs button').forEach(function(o){o.setAttribute('aria-selected',o===b?'true':'false');});
@@ -334,14 +335,17 @@ var all=cursos;
 function mini(x,hid){return '<a class="mini" href="'+x.url+'" target="_blank" rel="noopener"'+(hid?' aria-hidden="true" tabindex="-1"':'')+'><b>'+x.t1+' '+x.t2+'</b><strong>'+(x.preco?'R$ '+x.preco:'Ver valor ↗︎')+'</strong></a>';}
 var mh=all.map(function(x){return mini(x,false);}).join(''),mh2=all.map(function(x){return mini(x,true);}).join('');
 document.getElementById('minis').innerHTML=mh+mh2;
+setTimeout(function(){
 var profs=[['Ismael Souto','Mentoria de Estudos e Direito'],['Sérgio Rodrigues','Constituição Federal'],['Kaio Bastos','História'],['André Play','Informática'],['Léo Martins','Português'],['Vitor Moura','Geografia e Atualidades'],['Alexandre Monteiro','Matemática e RLM'],['Rogério Soares','Constituição Estadual e Legislação']];
 document.getElementById('profs').innerHTML=profs.map(function(s,i){
-return '<figure class="lin-card"><img src="img/prof'+(i+1)+'.webp" alt="Prof. '+s[0]+', '+s[1]+'" width="720" height="900" loading="lazy" decoding="async"></figure>';
+return '<figure class="lin-card"><img src="img/prof'+(i+1)+'-sm.webp" srcset="img/prof'+(i+1)+'-sm.webp 440w, img/prof'+(i+1)+'.webp 720w" sizes="(max-width:620px) 200px, 260px" alt="Prof. '+s[0]+', '+s[1]+'" width="440" height="550" loading="lazy" decoding="async"></figure>';
 }).join('');
 (function(){var t=document.getElementById('profs');var c=t.innerHTML;t.innerHTML=c+c.replace(/<figure class="lin-card">/g,'<figure class="lin-card" aria-hidden="true">');})();
 var forms=[['p16','Taciana Vitor','PMERJ'],['frame-5','Formatura','CFAP · PMERJ'],['p20','Sd. Correa','PMERJ'],['frame-1-1_1','Sd. L. Santos','PMERJ'],['p18','Nicole','Guarda Municipal'],['frame','Sd. Suellen Polen','PMERJ'],['p7','Débora','Aprovada'],['frame-4','Sd. Corecha','PMERJ'],['p2','Aluna formada','GM Duque de Caxias'],['frame-6','Formatura','CFAP · PMERJ'],['p3','Aluno formado','GM Duque de Caxias'],['frame-2','Formatura','PMERJ'],['p5','Aluno formado','GM Duque de Caxias'],['frame-3','Formatura','PMERJ'],['p19','Turma formada','Guarda Municipal'],['p24','Aluno formado','Formatura'],['p4','Aluno formado','GM Duque de Caxias'],['p6','Aluna formada','Formatura']];
 document.getElementById('forms').innerHTML=forms.map(function(a){return '<figure class="apv" style="margin:0"><img src="img/'+a[0]+'.webp" alt="'+a[1]+', '+a[2]+'" width="760" height="950" loading="lazy" decoding="async"><figcaption><b>'+a[1]+'</b><span>'+a[2]+'</span></figcaption></figure>';}).join('');
+},30);
 var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+setTimeout(function(){
 document.querySelectorAll('.carousel').forEach(function(c){
 var t=c.querySelector('.track');
 function step(){var f=t.children[0],f2=t.children[1];if(f&&f2&&t.classList.contains('coverflow'))return f2.offsetLeft-f.offsetLeft;var g=parseFloat(getComputedStyle(t).columnGap)||10;return f?f.getBoundingClientRect().width+g:300;}
@@ -368,6 +372,7 @@ c.addEventListener('mouseleave',function(){hover=false;});
 c.addEventListener('touchstart',function(){hover=true;setTimeout(function(){hover=false;},6000);},{passive:true});
 start();
 });
+},60);
 var phones=[].slice.call(document.querySelectorAll('.phone'));
 function setOn(ph,on){var v=ph.querySelector('video');ph.classList.toggle('on',on);ph.setAttribute('aria-pressed',on?'true':'false');
 v.muted=!on;ph.querySelector('.lbl').textContent=on?'Som ligado':'Ouvir';}
@@ -401,13 +406,13 @@ if(!vis&&playing){vid.pause();playing=false;}
 }
 var tk=false;
 window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;upd();});}},{passive:true});
-window.addEventListener('resize',upd);
-upd();
+window.addEventListener('resize',function(){requestAnimationFrame(upd);});
+if(document.readyState==='complete')requestAnimationFrame(upd);else window.addEventListener('load',function(){requestAnimationFrame(upd);});
 })();
 (function(){var v=document.getElementById('heroVid');if(!v)return;
-var m=window.innerWidth<761;if(m&&v.dataset.posterM)v.poster=v.dataset.posterM;
+var m=matchMedia('(max-width:760px)').matches;if(m&&v.dataset.posterM)v.poster=v.dataset.posterM;
 var conn=navigator.connection||{};if(conn.saveData||/2g/.test(conn.effectiveType||''))return;
-function start(){v.src=(window.innerWidth>=900?v.dataset.hd:(v.dataset.sd||v.dataset.hd));v.preload='auto';v.muted=true;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
+function start(){v.src=(matchMedia('(min-width:900px)').matches?v.dataset.hd:(v.dataset.sd||v.dataset.hd));v.preload='auto';v.muted=true;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
 var done=false;function go(){if(done)return;done=true;start();}
 function later(){if(m){['touchstart','scroll','pointerdown'].forEach(function(t){window.addEventListener(t,go,{once:true,passive:true});});setTimeout(go,3500);}else{(window.requestIdleCallback||function(f){setTimeout(f,1200);})(go,{timeout:2500});}}
 if(document.readyState==='complete')later();else window.addEventListener('load',later);
